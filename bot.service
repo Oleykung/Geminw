@@ -1,0 +1,27 @@
+[Unit]
+Description=Granado Espada M Boss Bot 24h
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/GranadoEspadaM_BossBot
+ExecStart=/usr/bin/python3 /root/GranadoEspadaM_BossBot/bot.py
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+Environment=PORT=10000
+
+# Log
+StandardOutput=append:/var/log/granado-boss-bot.log
+StandardError=append:/var/log/granado-boss-bot.log
+
+[Install]
+WantedBy=multi-user.target
+
+# วิธีติดตั้งบน VPS:
+# 1. sudo cp bot.service /etc/systemd/system/granado-boss-bot.service
+# 2. sudo systemctl daemon-reload
+# 3. sudo systemctl enable granado-boss-bot
+# 4. sudo systemctl start granado-boss-bot
+# 5. sudo systemctl status granado-boss-bot

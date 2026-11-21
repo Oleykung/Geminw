@@ -45,6 +45,10 @@ def api_bosses():
 def api_timers():
     return jsonify(load_timers())
 
+@app.route("/api/ping")
+def api_ping():
+    return jsonify({"status":"alive","uptime":"24h"})
+
 @app.route("/api/status")
 def api_status():
     return jsonify({"status":"ok","bosses":len(load_bosses()),"timers":len(load_timers()),"mode":"Flask WSGI Fixed"})
